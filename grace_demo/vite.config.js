@@ -10,4 +10,12 @@ export default defineConfig({
       "@": join(__dirname, "/src"),
     },
   },
+  server: {
+    proxy: {
+      "/api": {
+        target: "https://api.imooc-front.lgdsunday.club/",
+        changeOrigin: true,
+      },
+    },
+  },
 });
