@@ -5,7 +5,8 @@ const service = axios.create({
   timeout: 5000,
 });
 
-service.interceptors.request.use((response) => {
+service.interceptors.response.use((response) => {
+  console.log("response:", response);
   const { success, message, data } = response.data;
   //   要根据success的成功与否决定下面的操作
   if (success) {
