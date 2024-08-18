@@ -9,6 +9,12 @@
       >
         <m-svg-icon class="w-1.5 h-1.5" name="hamburger"></m-svg-icon>
       </li>
+      <!-- 滑块 -->
+      <li
+        ref="sliderTarget"
+        class="absolute h-[22px] bg-zinc-900 rounded-lg duration-200"
+        :style="sliderStyle"
+      ></li>
       <!-- category item -->
       <li
         v-for="item in data"
@@ -21,10 +27,16 @@
   </div>
 </template>
 <script setup>
+import { ref } from "vue";
 defineProps({
   data: {
     type: Array,
     required: true,
   },
+});
+// 滑块
+const sliderStyle = ref({
+  transform: "translateX(0px)",
+  width: "60px",
 });
 </script>
