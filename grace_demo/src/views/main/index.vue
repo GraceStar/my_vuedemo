@@ -1,5 +1,7 @@
 <template>
-  <div>这是首页内容</div>
+  <my-navigation></my-navigation>
 </template>
 
-<script setup></script>
+<script setup>
+import myNavigation from "./components/navigation/index.vue" 
+</script>
