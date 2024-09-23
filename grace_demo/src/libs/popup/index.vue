@@ -3,12 +3,12 @@
         <teleport to="body">
             <!-- 蒙版 -->
             <transition name="fade">
-                <div v-if="modelValue" class="w-screen h-screen bg-zinc-900/80 z-40 fixed top-0 left-0" @click="emits('update:modelValue',false)">
+                <div v-if="isOpen" class="w-screen h-screen bg-zinc-900/80 z-40 fixed top-0 left-0" @click="isOpen = false">
                 </div>
             </transition>
             <!-- 内容 -->
             <transition name="popup-down-up">
-                <div v-if="modelValue" v-bind="$attrs" class="w-screen bg-red z-50 fixed bottom-0">
+                <div v-if="isOpen" v-bind="$attrs" class="w-screen bg-red z-50 fixed bottom-0">
                     <slot/>
                 </div>
             </transition>
@@ -24,11 +24,13 @@ const props = defineProps({
         type: Boolean
     }
 });
-const emits = defineEmits(['update:modelValue']);
+import { useVModel } from '@vueuse/core';
+// const emits = defineEmits(['update:modelValue']);
+const isOpen = useVModel(props);
 
 const isLocked = useScrollLock(document.body);
 watch(
-  () => props.modelValue,
+  isOpen,
   (val) => {
     isLocked.value = val
   },
