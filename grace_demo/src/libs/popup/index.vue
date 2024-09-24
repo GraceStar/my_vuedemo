@@ -8,7 +8,7 @@
             </transition>
             <!-- 内容 -->
             <transition name="popup-down-up">
-                <div v-if="isOpen" v-bind="$attrs" class="w-screen bg-red z-50 fixed bottom-0">
+                <div v-if="isOpen" v-bind="$attrs" class="w-screen bg-red z-30 fixed bottom-0">
                     <slot/>
                 </div>
             </transition>
