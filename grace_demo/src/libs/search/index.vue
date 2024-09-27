@@ -14,6 +14,7 @@
           class="block w-full h-[44px] pl-4 text-sm outline-0 bg-zinc-100 caret-zinc-400 rounded-xl text-zinc-900 tracking-wide font-semibold border border-zinc-100 duration-500 group-hover:bg-white group-hover:border-zinc-200 focus:border-red-300"
           type="text"
           placeholder="搜索"
+          v-model="inputValue"
         />
         <!-- 删除按钮 -->
         <m-svg-icon
@@ -44,7 +45,7 @@
   
   <script setup>
     function onBtnClick(){
-        
+
     }
   </script>
   

@@ -2,10 +2,10 @@
     <button
       class="text-sm text-center rounded duration-150 flex justify-center items-center"
       :class="[
-        typeEnum[type],
-        sizeEnum[sizeKey].button,
-        { 'active:scale-105': isActiveAnim }
-      ]"
+      typeEnum[type],
+      sizeEnum[sizeKey].button,
+      { 'active:scale-105': isActiveAnim }
+    ]"
     >
       <!-- 展示 loading -->
       <m-svg-icon
@@ -26,7 +26,9 @@
       <slot v-else />
     </button>
   </template>
-<script lang="js">
+
+<script>
+import { computed } from 'vue'
 // type 可选项：表示按钮风格
 const typeEnum = {
   primary: 'text-white  bg-zinc-800 hover:bg-zinc-900 active:bg-zinc-800 ',
@@ -52,8 +54,10 @@ const sizeEnum = {
     icon: 'w-1.5 h-1.5'
   }
 }
-const sizeKey = computed(()=>{
-    return props.icon ? 'icon-' + props.size : props.size;
+</script>
+<script setup>
+const sizeKey = computed(() => {
+  return props.icon ? 'icon-' + props.size : props.size
 })
 
 const props = defineProps({
@@ -80,7 +84,7 @@ const props = defineProps({
     },
     size:{
         type: String,
-        default: 'main',
+        default: 'default',
         validator(val){
             const keys = Object.keys(sizeEnum).filter((key) => !key.includes('icon'))
             const result = keys.includes(val)
